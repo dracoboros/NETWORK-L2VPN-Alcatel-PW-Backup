@@ -1,0 +1,36 @@
+sys
+sysname R2
+isis
+ is-name R2
+ is-level level-2
+ network-entity 49.0000.0000.0002.00
+ cost-style wide
+mpls ldp
+ lsr-id 10.1.255.2
+mpls lsr-id 10.1.255.2
+interface Loopback 0
+ ip address 10.1.255.2 32
+ isis enable 1
+interface Route-Aggregation 1
+ link-aggregation mode dynamic
+ ip address 10.1.2.2 24
+ isis enable 1
+ isis circuit-type p2p 
+ mpls enable
+ mpls ldp enable
+interface GigabitEthernet 2/0
+ port link-aggregation group 1
+interface GigabitEthernet 1/0
+ port link-aggregation group 1
+interface GigabitEthernet3/0
+ ip address 10.2.4.2 24
+ isis enable 1
+ isis circuit-type p2p
+ mpls enable
+ mpls ldp enable
+interface GigabitEthernet4/0
+ ip address 10.2.3.2 24
+ isis enable 1
+ isis circuit-type p2p
+ mpls enable
+ mpls ldp enable
